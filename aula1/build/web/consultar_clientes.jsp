@@ -28,7 +28,11 @@
                 out.print("<td>" + lista.get(i).getId() + "</td>");
                 out.print("<td>" + lista.get(i).getNome() + "</td>");
                 out.print("<td>" + lista.get(i).getEmail() + "</td>");
-                out.print("<td>CLIQUE</td>");
+                out.print("<td><a href = 'alterar_cliente.jspid="
+                        + lista.get(i).getId()
+                        + "&nome= "+lista.get(i).getNome()
+                        + "&email= "+lista.get(i).getEmail()
+                        + "'>CLIQUE</a></td>");
                 out.print("<td>CLIQUE</td>");
                 out.print("</tr>");
             }

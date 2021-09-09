@@ -28,7 +28,7 @@ public class DAOCliente {
             stmt.execute();
             stmt.close();
         } catch (Exception erro) {
-            throw new RuntimeException("Erro Inserir Cliente: ", erro);
+            throw new RuntimeException("Erro Inserir Cliente: " + erro);
         }
 
     }
@@ -53,4 +53,37 @@ public class DAOCliente {
         return lista;
 
     }
+
+    public void atualizarCliente(Cliente cliente) {
+        try {
+
+            String sql = "UPDATE tb_clientes SET nome = ?, email = ? "
+                    + "WHERE id = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, cliente.getNome());
+            stmt.setString(2, cliente.getEmail());
+            stmt.setInt(3, cliente.getId());
+            stmt.execute();
+            stmt.close();
+            
+            
+            
+        } catch (Exception erro) {
+            throw new RuntimeException("Erro metodo atualizar cliente" + erro);
+        }
+    }
+    
+    public void excluirCliente(int valor){
+        try{
+            
+            String sql = "DELETE tb_clientes WHERE id = " + valor;
+            st = conn.createStatement();
+            st.execute(sql);
+            st.close();
+            
+        }catch(Exception erro){
+            throw new RuntimeException("Erro método excluir cliente " + erro);
+        }
+    }
+
 }
