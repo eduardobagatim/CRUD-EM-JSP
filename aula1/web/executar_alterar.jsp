@@ -12,7 +12,8 @@
         cli.setEmail(request.getParameter("email"));
         cli.setId(Integer.parseInt(request.getParameter("id")));
         cld.atualizarCliente(cli);
-        response.sendRedirect("consultar_clientes.jsp");
+        out.print("Cliente Alterado!");
+        out.print("<meta http-equiv='refresh' content='2, url=consultar_clientes.jsp'>");
 
     } catch (Exception erro) {
         throw new RuntimeException("Erro executar alterar" + erro);

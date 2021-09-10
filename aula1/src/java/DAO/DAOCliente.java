@@ -53,6 +53,27 @@ public class DAOCliente {
         return lista;
 
     }
+    
+    public ArrayList<Cliente> listarClientesNome(String valor) {
+        String sql = "SELECT * FROM tb_clientes WHERE nome like '%"+valor+"%'";
+        try {
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
+            while (rs.next()) {
+                Cliente cliente = new Cliente();
+                cliente.setId(rs.getInt("id"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setEmail(rs.getString("email"));
+                lista.add(cliente);
+            }
+
+        } catch (Exception erro) {
+            throw new RuntimeException("Erro no Listar Clientes:" + erro);
+        }
+
+        return lista;
+
+    }
 
     public void atualizarCliente(Cliente cliente) {
         try {
